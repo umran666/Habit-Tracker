@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"> </head>
+<body class="min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-2xl p-6 rounded-xl neon-box fade-in">
+    <h1 class="text-4xl font-bold text-center text-pink-300 mb-6 drop-shadow">Habit Tracker</h1>
+
+    <div class="mb-4 flex">
+      <input id="habitInput" type="text" placeholder="Add a new habit..."
+        class="flex-1 px-4 py-2 rounded-l-md neon-input focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      <button onclick="addHabit()"
+        class="neon-button px-4 py-2 rounded-r-md font-semibold">Add</button>
+    </div>
+
+    <div class="flex items-center mb-4 space-x-3">
+      <button id="micButton" onclick="toggleListening()"
+        class="p-3 rounded-full neon-button font-bold text-lg select-none">🎙️</button>
+      <span class="ml-3 text-pink-200 text-lg" id="feedback">Tap to speak</span>
+    </div>
+
+    <div class="mb-4 flex justify-between items-center text-pink-200 font-semibold">
+      <div id="progress">0 / 0 good habits completed</div>
+      <button id="resetBtn" onclick="showResetModal()" class="neon-button px-3 py-1 rounded text-sm">Reset</button>
+    </div>
+
+    <div class="habit-section">
+      <h2>Good Habits</h2>
+      <ul id="habitList" class="space-y-3"></ul>
+    </div>
+
+    <div class="habit-section">
+      <h2>Bad Habits</h2>
+      <ul id="badHabitList" class="space-y-3"></ul>
+    </div>
+  </div>
+
+  <div id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div id="modalContent">
+      <h2 id="modalTitle" class="text-xl mb-4">Reset all habits?</h2>
+      <p id="modalDesc" class="mb-6 text-pink-300">Are you sure you want to reset? This action cannot be undone.</p>
+      <button class="neon-button px-4 py-2 rounded" onclick="resetHabits()">Yes</button>
+      <button class="neon-button px-4 py-2 rounded bg-pink-600 hover:bg-pink-700" onclick="hideResetModal()">No</button>
+    </div>
+  </div>
+
+  <div id="customAlertModal" role="alertdialog" aria-modal="true" aria-labelledby="customAlertTitle">
+    <div id="customAlertContent">
+      <p id="customAlertTitle" class="text-lg font-semibold mb-4"></p>
+      <button onclick="hideCustomAlert()">OK</button>
+    </div>
+  </div>
+  <script src="script.js"></script> </body>
+</html>
